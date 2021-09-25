@@ -1,0 +1,44 @@
+{
+  "students": [
+    {
+      "name": "Bernadine",
+      "id": 1
+    },
+    {
+      "name": "Marjory",
+      "id": 2
+    },
+    {
+      "name": "Mortimer",
+      "id": 3
+    },
+    {
+      "name": "Patricia",
+      "id": 4
+    },
+    {
+      "name": "Karolann",
+      "id": 5
+    },
+    {
+      "name": "Lavon",
+      "id": 6
+    },
+    {
+      "name": "Domenica",
+      "id": 7
+    },
+    {
+      "name": "Jevon",
+      "id": 8
+    },
+    {
+      "name": "Laisha",
+      "id": 9
+    },
+    {
+      "name": "Zella",
+      "id": 10
+    }
+  ]
+}
