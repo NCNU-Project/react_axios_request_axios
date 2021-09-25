@@ -1,0 +1,11 @@
+{
+  "expo": {
+    "name": "axiosdemoNative",
+    "slug": "axiosdemoNative",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  },
+  "name": "axiosdemoNative"
+}
