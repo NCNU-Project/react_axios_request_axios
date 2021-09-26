@@ -5,9 +5,10 @@
     "ios": "react-native run-ios",
     "web": "expo start --web",
     "start": "react-native start",
-    "test": "jest"
+    "test": "jest --watch"
   },
   "dependencies": {
+    "@reduxjs/toolkit": "^1.6.1",
     "axios": "^0.21.4",
     "expo": "~42.0.1",
     "expo-splash-screen": "~0.11.2",
@@ -25,6 +26,8 @@
     "react-native-svg": "12.1.1",
     "react-native-unimodules": "0.14.10",
     "react-native-web": "~0.13.12",
+    "react-redux": "^7.2.5",
+    "redux-mock-store": "^1.5.4",
     "styled-components": "^5.3.1",
     "styled-system": "^5.1.5"
   },
@@ -36,5 +39,16 @@
     "jest-expo": "^42.1.0",
     "react-test-renderer": "^17.0.2"
   },
-  "private": true
+  "private": true,
+  "jest": {
+    "preset": "jest-expo",
+    "transformIgnorePatterns": [
+      "node_modules/(?!(jest-)?react-native|react-clone-referenced-element|@react-native-community|expo(nent)?|@expo(nent)?/.*|react-navigation|@react-navigation/.*|@unimodules/.*|unimodules|sentry-expo|native-base)"
+    ],
+    "moduleDirectories": [
+      "node_modules",
+      "utils",
+      "__dirname"
+    ]
+  }
 }
