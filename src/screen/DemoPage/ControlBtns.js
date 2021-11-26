@@ -12,20 +12,24 @@ import {
 } from "../../_services/api.services";
 import { Button, Stack } from "native-base";
 import faker from "faker";
+import { useDispatch } from "react-redux";
+import {
+  getStuedntByFetchThunk,
+  getStuedntByAxiosThunk,
+} from "../../store/slices/dataSlice";
 
-const styles = StyleSheet.create(
-    {
-        axiosBtn: {
-            backgroundColor: "#5a29e4"
-        },
-        fetchBtn: {
-            backgroundColor: "#000",
-            color: "#fff"
-        }
-    }
-)
+const styles = StyleSheet.create({
+  axiosBtn: {
+    backgroundColor: "#5a29e4",
+  },
+  fetchBtn: {
+    backgroundColor: "#000",
+    color: "#fff",
+  },
+});
 
 const ControlBtns = ({ data, setData }) => {
+  const dispath = useDispatch();
   const btnEntriesFetch = [
     {
       title: "create(fetch)",
@@ -36,9 +40,8 @@ const ControlBtns = ({ data, setData }) => {
     },
     {
       title: "read(fetch)",
-      onClick: async () => {
-        const data = await read_student_with_fetch();
-        setData(data);
+      onClick: () => {
+        dispath(getStuedntByFetchThunk());
       },
     },
     {
@@ -67,9 +70,8 @@ const ControlBtns = ({ data, setData }) => {
     },
     {
       title: "read(axios)",
-      onClick: async () => {
-        const data = await read_student_with_axios();
-        setData(data);
+      onClick: () => {
+        dispath(getStuedntByAxiosThunk());
       },
     },
     {
@@ -94,7 +96,6 @@ const ControlBtns = ({ data, setData }) => {
   };
   const getRandomName = () => faker.name.firstName();
 
-
   const updateData = async () => {
     const data = await read_student_with_axios();
     setData(data);
@@ -102,27 +103,31 @@ const ControlBtns = ({ data, setData }) => {
 
   return (
     <Stack space={3}>
-        <Button.Group
-          mx={{
-            base: "auto",
-            md: 0,
-          }}
-        >
-          {btnEntriesaAxios.map(({onClick: onPress, title }) => (
-          <Button onPress={onPress} style={styles.axiosBtn}>{title}</Button>
-      ))}
-        </Button.Group>
+      <Button.Group
+        mx={{
+          base: "auto",
+          md: 0,
+        }}
+      >
+        {btnEntriesaAxios.map(({ onClick: onPress, title }) => (
+          <Button onPress={onPress} style={styles.axiosBtn} key={title}>
+            {title}
+          </Button>
+        ))}
+      </Button.Group>
 
-        <Button.Group
-          mx={{
-            base: "auto",
-            md: 0,
-          }}
-        >
-          {btnEntriesFetch.map(({onClick: onPress, title }) => (
-          <Button onPress={onPress} style={styles.fetchBtn}>{title}</Button>
-      ))}
-        </Button.Group>
+      <Button.Group
+        mx={{
+          base: "auto",
+          md: 0,
+        }}
+      >
+        {btnEntriesFetch.map(({ onClick: onPress, title }) => (
+          <Button onPress={onPress} style={styles.fetchBtn} key={title}>
+            {title}
+          </Button>
+        ))}
+      </Button.Group>
     </Stack>
   );
 };

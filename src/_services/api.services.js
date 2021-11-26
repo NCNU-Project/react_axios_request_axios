@@ -49,7 +49,7 @@ export const read_student_with_fetch = async () => {
 // axios api
 export const read_student_with_axios = async () => {
   return userRequest
-    .get("/students", { name: "chofinn" })
+    .get("/students")
     .then((res) => res.data)
     .then((data) => {
       console.log(data);
