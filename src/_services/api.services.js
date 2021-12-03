@@ -38,7 +38,7 @@ export const create_student_with_axios = async (name) => {
 // read students
 // fetch api
 export const read_student_with_fetch = async () => {
-  return fetch("http://192.168.0.120:3001/students")
+  return fetch("http://192.168.0.120:3000/students")
     .then((res) => res.json())
     .then((data) => {
       console.log(data);
@@ -52,7 +52,7 @@ export const read_student_with_axios = async () => {
     .get("/students")
     .then((res) => res.data)
     .then((data) => {
-      console.log(data);
+      // console.log(data);
       return data;
     });
 };

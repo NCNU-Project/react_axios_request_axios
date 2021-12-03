@@ -5,7 +5,7 @@
     "ios": "react-native run-ios",
     "web": "expo start --web",
     "start": "react-native start",
-    "test": "jest",
+    "test": "jest --detectOpenHandles",
     "test:watch": "npm test -- --watch"
   },
   "dependencies": {
@@ -16,7 +16,7 @@
     "expo-status-bar": "~1.0.4",
     "expo-updates": "~0.8.1",
     "faker": "^5.5.3",
-    "native-base": "^3.2.0",
+    "native-base": "^3.2.1",
     "react": "16.13.1",
     "react-dom": "16.13.1",
     "react-native": "~0.63.4",
@@ -38,13 +38,14 @@
     "axios-mock-adapter": "^1.20.0",
     "jest": "^27.2.1",
     "jest-expo": "^42.1.0",
+    "promise-polyfill": "^8.2.1",
     "react-test-renderer": "^17.0.2"
   },
   "private": true,
   "jest": {
     "preset": "jest-expo",
     "transformIgnorePatterns": [
-      "node_modules/(?!(jest-)?react-native|react-clone-referenced-element|@react-native-community|expo(nent)?|@expo(nent)?/.*|react-navigation|@react-navigation/.*|@unimodules/.*|unimodules|sentry-expo|native-base)"
+      "node_modules/(?!((jest-)?react-native|@react-native(-community)?)|expo(nent)?|@expo(nent)?/.*|@expo-google-fonts/.*|react-navigation|@react-navigation/.*|@unimodules/.*|unimodules|sentry-expo|native-base|react-native-svg)"
     ],
     "moduleDirectories": [
       "node_modules",
