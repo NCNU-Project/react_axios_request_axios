@@ -11,32 +11,22 @@ global.Promise = Promise;
 
 const mock = new MockAdapter(userRequest, { delayResponse: 500 });
 
-beforeEach(() => {
-  mock.onGet("http://192.168.0.120:3001/students").reply(200, {
-    users: [{ id: 1, name: "John Smith" }],
+describe("test demoPage", () => {
+  beforeEach(() => {
+    mock.onGet("http://192.168.0.120:3001/students").reply(200, [{ id: 1, name: "John Smith" }]);
   });
-});
-
-afterEach(() => {
-  mock.restore();
-  cleanup();
-});
-
-async function waitForEvent(cb) {
-  await waitFor(async () => {
-    await cb();
-    await new Promise((resolve) => process.nextTick(resolve));
+  
+  afterEach(() => {
+    mock.restore();
+    cleanup();
   });
-}
 
-describe("test create", () => {
-  test("smoking test", async () => {
+  test("test whether the data fetch when click read from axios", async () => {
     const { getByText, findByText, toJSON } = render(<DemoPage />);
 
     const axiosGetBtn = getByText("read(axios)");
-
+    fireEvent(axiosGetBtn, "press");
     await findByText('"loading"');
-    await waitForEvent(() => fireEvent(axiosGetBtn, "press"));
     await findByText('"John Smith"');
   });
 });
